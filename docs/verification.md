@@ -46,13 +46,15 @@ The test invocation uses [Node 24's documented test-isolation mode](https://node
 | Complete regression suite after controlled-reinspection changes | Passed: 43 tests through `npm run check` |
 | TypeScript after controlled-reinspection changes | Passed: `npm run typecheck` exited successfully |
 | Production build after all current application changes | Passed: Sites production build exited successfully |
-| Browser approval/reinspection workflow | Passed in the managed local preview: original approval archived, new safety hold enforced, revised economics evaluated after clearance, and a new approval created |
-| GitHub CI | Pending first verified remote run |
-| Updated hosted deployment | Pending release verification |
+| Browser approval/reinspection workflow | Passed in the managed local preview: original approval archived, new safety hold enforced, revised economics evaluated after clearance, and a new approval persisted after a full reload |
+| GitHub CI | Blocked before job execution by GitHub account billing/spending controls; see [run 41186207082](https://github.com/connorodea/reclaim/actions/runs/41186207082). GitHub reported no executed steps. This is not a successful remote verification. |
+| Updated hosted deployment | Passed: private release `appgdep_6ae5abc8e79c8191ae02a0c12acb84a8` succeeded for source `86e91541f431b61625b013d10b3b3bddf0ce9549` |
 
 The browser example approved a fictional Dell at $153.14 expected net recovery, reopened it with a reason, and reduced its entered retail price from $239 to $199. All routes were blocked while the safety hold remained. After diagnostics and safety clearance, expected direct-resale net recovery became $126.81, while the original $153.14 decision and $239 price input remained visible in the archived approval. These are synthetic workflow checks, not recovered revenue.
 
 ![Original approval retained during reinspection](reclaim-reinspection-20261031.jpg)
+
+The complete source was published to the private `connorodea/reclaim` repository on `main` at application commit `9a0931fc24fe3f6b33524753bb57c8ce55e54c83`. Its Git tree, `243ccbe51b1f361e3fe5373335463aaac26aab1f`, exactly matched the verified Sites source tree. Later documentation commits record the release receipts and CI limitation. Resolving the account's GitHub Actions billing/spending restriction and rerunning CI is the remaining hosted verification step; no billing settings were changed during implementation.
 
 ## Scope limits
 
