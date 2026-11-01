@@ -1,5 +1,9 @@
 # Verification record
 
+## Current automation setting
+
+Automatic and hosted GitHub Actions runs are disabled at the owner's request, and the CI workflow has been removed. The results below are historical verification records. Local check commands remain optional manual references; they do not authorize or require new runs. There is no pending requirement to change billing settings or rerun hosted CI.
+
 ## Browser workflow checks
 
 The following workflows were exercised in the managed local browser preview during implementation:
@@ -26,13 +30,13 @@ The following results describe the initial application before the contributor/CI
 | Production build | Passed: the production build exited successfully |
 | Hosted deployment | Passed: private release `appgdep_6ae5a27b30dc8191a4974de1943d1778` succeeded |
 
-Hosted publication is verified separately by the deployment result reported with a release; this record does not assert that publication has completed.
+The deployment rows preserve the recorded publication results for those releases.
 
-## Contributor and CI workflow
+## Historical local and workflow verification
 
 `npm run check` was executed successfully after adding the repeatable package scripts and controlled-reinspection support: all 43 regression tests ran as individual cases (12 engine, 15 CSV, 16 backend), followed by a successful `tsc --noEmit`. The workflow YAML was parsed and its event triggers, read-only permission, pinned actions, Node version, and credential setting were checked. The package rename and Node 24 runtime declaration are consistent between `package.json` and `package-lock.json`; no dependency versions changed.
 
-The GitHub workflow is configured to run tests, type-check, and build. It has only `contents: read` permission, does not persist checkout credentials, and has no deployment step. Official action versions were verified against their release and commit pages:
+Before its removal, the prepared GitHub workflow specified tests, type-checking, and a build, with only `contents: read` permission, no persisted checkout credentials, and no deployment step. Its official action versions were verified against their release and commit pages; the following pins are historical records, not an active workflow:
 
 | Action | Pinned version and source |
 | --- | --- |
@@ -47,14 +51,14 @@ The test invocation uses [Node 24's documented test-isolation mode](https://node
 | TypeScript after controlled-reinspection changes | Passed: `npm run typecheck` exited successfully |
 | Production build after all current application changes | Passed: Sites production build exited successfully |
 | Browser approval/reinspection workflow | Passed in the managed local preview: original approval archived, new safety hold enforced, revised economics evaluated after clearance, and a new approval persisted after a full reload |
-| GitHub CI | Blocked before job execution by GitHub account billing/spending controls; see [run 41186207082](https://github.com/connorodea/reclaim/actions/runs/41186207082). GitHub reported no executed steps. This is not a successful remote verification. |
+| GitHub CI | Disabled at the owner's request. The earlier [run 41186207082](https://github.com/connorodea/reclaim/actions/runs/41186207082) reported no executed steps; no successful hosted CI run is claimed. |
 | Updated hosted deployment | Passed: private release `appgdep_6ae5abc8e79c8191ae02a0c12acb84a8` succeeded for source `86e91541f431b61625b013d10b3b3bddf0ce9549` |
 
 The browser example approved a fictional Dell at $153.14 expected net recovery, reopened it with a reason, and reduced its entered retail price from $239 to $199. All routes were blocked while the safety hold remained. After diagnostics and safety clearance, expected direct-resale net recovery became $126.81, while the original $153.14 decision and $239 price input remained visible in the archived approval. These are synthetic workflow checks, not recovered revenue.
 
 ![Original approval retained during reinspection](reclaim-reinspection-20261031.jpg)
 
-The complete source was published to the private `connorodea/reclaim` repository on `main` at application commit `9a0931fc24fe3f6b33524753bb57c8ce55e54c83`. Its Git tree, `243ccbe51b1f361e3fe5373335463aaac26aab1f`, exactly matched the verified Sites source tree. Later documentation commits record the release receipts and CI limitation. Resolving the account's GitHub Actions billing/spending restriction and rerunning CI is the remaining hosted verification step; no billing settings were changed during implementation.
+The complete source was published to the private `connorodea/reclaim` repository on `main` at application commit `9a0931fc24fe3f6b33524753bb57c8ce55e54c83`. Its Git tree, `243ccbe51b1f361e3fe5373335463aaac26aab1f`, exactly matched the verified Sites source tree. Later documentation commits record the release receipts. Automatic and hosted CI are now disabled at the owner's request; no billing change or hosted CI rerun is planned.
 
 ## Scope limits
 

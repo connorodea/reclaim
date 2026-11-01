@@ -2,7 +2,7 @@
 
 A working electronics recovery workbench: intake units, inspect route economics, change assumptions, approve dispositions, and record actual outcomes. Built with TypeScript, React, Vinext, Cloudflare Workers, and D1.
 
-[Private application](https://reclaim-recovery-intelligence.cpodea5.chatgpt.site) · [Source repository](https://github.com/connorodea/reclaim) · [Continuous integration](https://github.com/connorodea/reclaim/actions)
+[Private application](https://reclaim-recovery-intelligence.cpodea5.chatgpt.site) · [Source repository](https://github.com/connorodea/reclaim) · [Verification notes](docs/verification.md)
 
 ## Implemented scope
 
@@ -35,11 +35,11 @@ This release does not connect to marketplaces, obtain live comps, generate listi
 | `docs/roadmap.md` | Dependency-ordered increments for channel economics, learned demand, bounded repricing, and execution |
 | `docs/verification.md` | Completed workflow checks and the latest automated verification status |
 
-## Development
+## Optional local development reference
 
 Use **Node.js 24** and npm. The package and lockfile declare the same runtime requirement and application name. No production credentials are needed to run the pure regression tests or build the application.
 
-From a clean checkout:
+The following commands are optional manual references. Run them only when choosing to work locally. From a clean checkout:
 
 ```sh
 npm ci
@@ -66,7 +66,7 @@ Development builds use an isolated preview identity, and the portable starter ad
 
 Keep production requests behind the trusted identity boundary. Moving to another host requires an authentication adapter that verifies callers and prevents visitor-supplied identity headers from becoming trusted, plus a replacement for the D1 storage binding. The existing code is not an unprotected standalone server.
 
-### Contributor checks
+### Optional manual checks
 
 | Command | Purpose |
 | --- | --- |
@@ -76,11 +76,11 @@ Keep production requests behind the trusted identity boundary. Moving to another
 | `npm run build` | Produce the deployable application artifact |
 | `npm run db:generate` | Generate migrations after a schema change |
 
-Tests use Node's supported `--test-isolation=none` mode so each actual test case is executed and reported consistently in both the development environment and CI. The pure tests must avoid shared mutable global state. Add a regression test when changing eligibility, unit economics, approval history, imports, or state transitions. Use synthetic fixtures; never commit customer inventories, production credentials, local database state, or build output.
+Tests use Node's supported `--test-isolation=none` mode so each actual test case is executed and reported consistently when invoked manually. The pure tests must avoid shared mutable global state. Use synthetic fixtures; never commit customer inventories, production credentials, local database state, or build output.
 
 ### Continuous integration
 
-`.github/workflows/ci.yml` installs locked dependencies, runs tests, checks TypeScript, and builds on pull requests and pushes to `main`; it also supports manual execution. It uses Node 24, `contents: read` permissions, disabled credential persistence, and official GitHub actions pinned to verified release commits. CI does not deploy or require application secrets. A configured workflow is not evidence of a successful remote run; the release owner checks the run result after the source is pushed.
+Automatic and hosted GitHub Actions runs are disabled at the owner's request. The CI workflow has been removed, so pushes and pull requests do not trigger it. Local check scripts remain available as optional manual references. No CI rerun or billing change is required by the current workflow.
 
 ## API
 
